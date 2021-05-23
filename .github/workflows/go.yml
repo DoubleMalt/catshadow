@@ -51,7 +51,7 @@ jobs:
           (cd docker/nonvoting_mixnet && docker-compose ps) &&\
           (cd docker/nonvoting_mixnet && docker-compose logs auth) &&\
           ls -lha  docker/nonvoting_mixnet/conf/auth/authority_data &&\
-          (cd docker/nonvoting_mixnet && docker-compose run --rm --entrypoint "/bin/sh -c" auth (cd /conf/authority_data && ls -lha))
+          (cd docker/nonvoting_mixnet && docker-compose run --rm --entrypoint "/bin/sh -c" auth ls -lha /conf)
 
       - name: run the tests
         run: GORACE=history_size=7 go test -tags=docker_test -race -v -run Docker
