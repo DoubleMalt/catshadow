@@ -46,6 +46,10 @@ jobs:
         run: |
           cd docker/nonvoting_mixnet && docker-compose --verbose up -d
 
+      - name: show environment
+        run: |
+          docker ps -a && ip addr
+
       - name: run the tests
         run: GORACE=history_size=7 go test -tags=docker_test -race -v -run Docker
 
