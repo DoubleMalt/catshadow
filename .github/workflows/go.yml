@@ -44,12 +44,12 @@ jobs:
 
       - name: Start the mixnet
         run: |
-          cd docker/nonvoting_mixnet && docker-compose --verbose up -d
+          cd docker/nonvoting_mixnet && docker-compose up -d
 
       - name: show environment
         run: |
           docker ps -a && mount && (cd docker/nonvoting_mixnet && docker-compose ps) &&\
-          (cd docker/nonvoting_mixnet && docker-compose logs auth)
+          (cd docker/nonvoting_mixnet && docker-compose logs auth) && ls -lhar  docker/nonvoting_mixnet/conf/auth
 
       - name: run the tests
         run: GORACE=history_size=7 go test -tags=docker_test -race -v -run Docker
