@@ -48,7 +48,7 @@ jobs:
 
       - name: show environment
         run: |
-          && (cd docker/nonvoting_mixnet && docker-compose ps) &&\
+          (cd docker/nonvoting_mixnet && docker-compose ps) &&\
           (cd docker/nonvoting_mixnet && docker-compose logs auth) &&\
           ls -lha  docker/nonvoting_mixnet/conf/auth/authority_data &&\
           (cd docker/nonvoting_mixnet && docker-compose run --rm auth ls -lha  /conf/authority_data)
