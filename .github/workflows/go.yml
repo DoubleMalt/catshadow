@@ -48,7 +48,8 @@ jobs:
 
       - name: show environment
         run: |
-          docker ps -a && ip addr && (cd docker/nonvoting_mixnet && docker-compose ps)
+          docker ps -a && ip addr && (cd docker/nonvoting_mixnet && docker-compose ps) &&\
+          docker-compose logs auth
 
       - name: run the tests
         run: GORACE=history_size=7 go test -tags=docker_test -race -v -run Docker
